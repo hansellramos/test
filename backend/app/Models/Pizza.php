@@ -9,9 +9,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+/**
+ * @property string $name
+ * @property string $description
+ * @property string $image
+ */
+class Pizza extends Model
 {
-    use Authenticatable, Authorizable, HasFactory;
+    public $table = 'pizza';
 
     /**
      * The attributes that are mass assignable.
@@ -19,15 +24,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'description', 'image'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var string[]
-     */
-    protected $hidden = [
-        'password',
-    ];
+    public $timestamps = false;
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class, 'pizza_ingredient', 'pizza_id', 'ingredient_id');
+    }
+
 }
