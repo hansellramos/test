@@ -1,1 +1,11 @@
-<p>ingredient-index works!</p>
+<div class="container ingredients-list">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let ingredient of ingredients$ | async">
+      <a class="btn btn-sm btn-primary" [routerLink]="['/pages/ingredient/show', ingredient.id]">Details</a>
+      &nbsp;
+      <a class="btn btn-sm btn-warning" [routerLink]="['/pages/ingredient/edit', ingredient.id]">Edit</a>
+      {{ingredient.name}}
+      <span class="badge bg-info">{{ingredient.price | currency: 'EUR': true}}</span>
+    </li>
+  </ul>
+</div>

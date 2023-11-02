@@ -1,1 +1,30 @@
-<p>ingredient-show works!</p>
+<div class="container ingredient-form">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form">
+        <div class="form-group">
+          <label>Name</label>
+          <p class="form-control-static">{{item.name}}</p>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <p class="form-control-static">{{item.price | currency:'EUR':true}}</p>
+        </div>
+        <div class="form-group">
+          <label>Unit</label>
+          <p class="form-control-static">{{item.unit}}</p>
+        </div>
+        <div class="form-group">
+          <label>Image</label>
+          <p class="form-control-static">
+            <img [src]="'/assets/icons/' + item.icon" class="ingredient-icon" />
+          </p>
+        </div>
+        <div class="form-buttons">
+          <button type="button" class="btn btn-primary" [routerLink]="['/pages/ingredient/edit', item.id]">Edit</button>
+          <button type="button" class="btn btn-secondary" [routerLink]="['/pages/ingredient']">Back to List</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

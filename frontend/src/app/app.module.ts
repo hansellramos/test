@@ -11,6 +11,8 @@ import { PizzaEditComponent } from './components/pages/pizza/pizza-edit/pizza-ed
 import { IngredientIndexComponent } from './components/pages/ingredient/ingredient-index/ingredient-index.component';
 import { IngredientShowComponent } from './components/pages/ingredient/ingredient-show/ingredient-show.component';
 import { IngredientEditComponent } from './components/pages/ingredient/ingredient-edit/ingredient-edit.component';
+import {PizzaModule} from "./components/pages/pizza/pizza.module";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { IngredientEditComponent } from './components/pages/ingredient/ingredien
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PizzaModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

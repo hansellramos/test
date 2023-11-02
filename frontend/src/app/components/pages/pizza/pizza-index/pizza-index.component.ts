@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {PizzaService} from "../../../../core/services/pizza.service";
 
 @Component({
   selector: 'app-pizza-index',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./pizza-index.component.sass']
 })
 export class PizzaIndexComponent {
+
+  constructor(private pizzaService: PizzaService) { }
+
+  pizzas$ = this.pizzaService.getPizzas();
 
 }

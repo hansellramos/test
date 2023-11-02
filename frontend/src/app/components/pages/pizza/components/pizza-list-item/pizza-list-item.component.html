@@ -1,0 +1,16 @@
+<div class="card m-2 pizza-list-item">
+  <div class="card-img-top bd-placeholder-img pizza-list-item-image"
+       [style.background-image]="'url(/assets/images/'+item?.image+')'">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{item?.name}}</h5>
+    <p class="card-text">{{item?.description}}</p>
+    <a [routerLink]="['/pages/pizza/edit', item?.id]" class="btn btn-sm">Edit</a>
+    <a [routerLink]="['/pages/pizza/show', item?.id]" class="btn btn-sm">Details</a>
+    <button type="button" class="btn btn-sm" (click)="showModal = true">Ingredients</button>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<app-pizza-ingredients-modal [item]="item" (onClose)="showModal = false" *ngIf="showModal"></app-pizza-ingredients-modal>

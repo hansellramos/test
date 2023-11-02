@@ -1,1 +1,57 @@
-<p>ingredient-edit works!</p>
+<div class="container ingredient-form">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" [(ngModel)]="item.name" class="form-control" id="name" name="name" placeholder="Name">
+        </div>
+        <!-- price -->
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" [(ngModel)]="item.price" class="form-control" id="price" name="price" placeholder="Price">
+        </div>
+        <!-- unit -->
+        <div class="form-group">
+          <label for="unit">Unit</label>
+          <div class="btn-group btn-group-sm d-block">
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.unit == 'kg'" (click)="item.unit = 'kg'">kg</button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.unit == 'g'" (click)="item.unit = 'g'">g</button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.unit == 'l'" (click)="item.unit = 'l'">l</button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.unit == 'ml'" (click)="item.unit = 'ml'">ml</button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.unit == 'pcs'" (click)="item.unit = 'pcs'">pcs</button>
+          </div>
+        </div>
+        <!-- icon -->
+        <div class="form-group">
+          <label for="icon">Icon</label>
+          <div class="btn-group-sm ingredient-icons">
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.icon == 'bacon.svg'" (click)="item.icon = 'bacon.svg'">
+              <img src="/assets/icons/bacon.svg" alt="Bacon">
+            </button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.icon == 'cheese.svg'" (click)="item.icon = 'cheese.svg'">
+              <img src="/assets/icons/cheese.svg" alt="Cheese">
+            </button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.icon == 'herb.svg'" (click)="item.icon = 'herb.svg'">
+              <img src="/assets/icons/herb.svg" alt="Herb">
+            </button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.icon == 'onion.svg'" (click)="item.icon = 'onion.svg'">
+              <img src="/assets/icons/onion.svg" alt="Onion">
+            </button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.icon == 'sausage.svg'" (click)="item.icon = 'sausage.svg'">
+              <img src="/assets/icons/sausage.svg" alt="Sausage">
+            </button>
+            <button type="button" class="btn btn-secondary" [class.btn-info]="item.icon == 'tomato.svg'" (click)="item.icon = 'tomato.svg'">
+              <img src="/assets/icons/tomato.svg" alt="Tomato">
+            </button>
+          </div>
+        </div>
+        <!-- buttons -->
+        <div class="form-buttons">
+          <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+          <button type="button" class="btn btn-secondary" [routerLink]="['/pages/ingredient']">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

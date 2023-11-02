@@ -1,0 +1,15 @@
+<!-- modal using css -->
+<div class="card pizza-list-item-ingredients">
+  <div class="card-title">
+    <button type="button" class="btn btn-close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&nbsp;</span>
+    </button>
+    <span>Ingredients</span>
+  </div>
+  <div class="card-body">
+    <ul>
+      <li *ngFor="let ingredient of item?.ingredients">{{ ingredient.name }}</li>
+    </ul>
+  </div>
+</div>
+<div class="modal-backdrop" (click)="close()"></div>
