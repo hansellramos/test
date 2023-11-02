@@ -3,7 +3,7 @@
        [style.background-image]="'url(/assets/images/'+item?.image+')'">
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{item?.name}}</h5>
+    <h5 class="card-title">{{item?.name}} ({{item?.price() | currency: 'EUR': true}})</h5>
     <p class="card-text">{{item?.description}}</p>
     <a [routerLink]="['/pages/pizza/edit', item?.id]" class="btn btn-sm">Edit</a>
     <a [routerLink]="['/pages/pizza/show', item?.id]" class="btn btn-sm">Details</a>

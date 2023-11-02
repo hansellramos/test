@@ -26,7 +26,7 @@ class IngredientSeeder extends Seeder
 
         // 2
         $mushrooms = new \App\Models\Ingredient([
-            'name' => 'Mushrooms',
+            'name' => 'Sliced Mushrooms',
             'price' => 0.5,
             'unit' => 'g',
             'icon' => 'mushroom.svg'
@@ -72,7 +72,7 @@ class IngredientSeeder extends Seeder
         // 7
         $oregano = new \App\Models\Ingredient([
             'name' => 'Oregano',
-            'price' => 1.5,
+            'price' => 1.0,
             'unit' => 'g',
             'icon' => 'herb.svg'
         ]);
@@ -80,8 +80,8 @@ class IngredientSeeder extends Seeder
 
         // 8
         $bacon = new \App\Models\Ingredient([
-            'name' => 'bacon',
-            'price' => 1.5,
+            'name' => 'Bacon',
+            'price' => 1.0,
             'unit' => 'g',
             'icon' => 'bacon.svg'
         ]);

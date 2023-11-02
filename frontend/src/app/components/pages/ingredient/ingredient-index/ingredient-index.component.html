@@ -1,6 +1,10 @@
 <div class="container ingredients-list">
+  <h1>Ingredients List</h1>
+  <div *ngIf="ingredients.length === 0" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let ingredient of ingredients$ | async">
+    <li class="list-group-item" *ngFor="let ingredient of ingredients">
       <a class="btn btn-sm btn-primary" [routerLink]="['/pages/ingredient/show', ingredient.id]">Details</a>
       &nbsp;
       <a class="btn btn-sm btn-warning" [routerLink]="['/pages/ingredient/edit', ingredient.id]">Edit</a>

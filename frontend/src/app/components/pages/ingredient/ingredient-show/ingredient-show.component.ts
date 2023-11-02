@@ -14,7 +14,9 @@ export class IngredientShowComponent {
 
   constructor(private ingredientService: IngredientService,
               private route: ActivatedRoute) {
-    this.item = {} as unknown as Ingredient
+    this.item = {
+      icon: 'generic.svg'
+    } as unknown as Ingredient
   }
 
   ngOnInit(): void {

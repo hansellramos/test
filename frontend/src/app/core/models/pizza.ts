@@ -8,7 +8,7 @@ export class Pizza {
   image: string;
 
   price(): number {
-    return this.ingredients.reduce((acc, ingredient) => acc + ingredient.price, 0);
+    return this.ingredients.reduce((acc, ingredient) => acc + ingredient.price, 0) * 1.5;
   }
 
   constructor(id: number, name: string, description: string, ingredients: Ingredient[], image: string) {

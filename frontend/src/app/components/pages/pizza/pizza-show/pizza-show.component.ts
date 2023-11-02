@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {PizzaService} from "../../../../core/services/pizza.service";
 import {Pizza} from "../../../../core/models/pizza";
 import {IngredientService} from "../../../../core/services/ingredient.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Ingredient} from "../../../../core/models/ingredient";
 
 @Component({
@@ -23,7 +23,18 @@ export class PizzaShowComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.pizzaService.getPizza(params['id']).subscribe(data => {
-        this.item = new Pizza(data.id, data.name, data.description, data.ingredients, data.image)
+        this.item = new Pizza(
+          data.id,
+          data.name,
+          data.description,
+          data.ingredients.map((ingredient: any) => new Ingredient(
+            ingredient.id,
+            ingredient.name,
+            parseFloat(ingredient.price),
+            ingredient.unit,
+            ingredient.icon
+          )),
+          data.image)
       })
     })
     this.ingredientService.getIngredients().subscribe(data => {

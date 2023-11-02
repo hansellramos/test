@@ -1,8 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <h1>Pizza List</h1>
+            <div *ngIf="pizzas.length === 0" class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
             <div class="row">
-              <div class="col-12 col-md-6" *ngFor="let pizza of pizzas$ | async" >
+              <div class="col-12 col-md-6" *ngFor="let pizza of pizzas" >
                 <app-pizza-list-item [item]="pizza"></app-pizza-list-item>
               </div>
             </div>

@@ -51,6 +51,11 @@ class PizzaController extends Controller
         $pizza->description = $request->description;
         $pizza->image = $request->image;
         $pizza->save();
+        // ingredients
+        $ingredients = $request->ingredients;
+        if ($ingredients) {
+            $pizza->ingredients()->sync(array_column($ingredients, 'id'));
+        }
         return $pizza;
     }
 

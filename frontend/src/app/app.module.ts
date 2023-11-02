@@ -13,6 +13,7 @@ import { IngredientShowComponent } from './components/pages/ingredient/ingredien
 import { IngredientEditComponent } from './components/pages/ingredient/ingredient-edit/ingredient-edit.component';
 import {PizzaModule} from "./components/pages/pizza/pizza.module";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     PizzaModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

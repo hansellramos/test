@@ -28,19 +28,38 @@ export class PizzaEditComponent {
   }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(params => {
       this.pizzaService.getPizza(params['id']).subscribe(data => {
-        this.item = new Pizza(data.id, data.name, data.description, data.ingredients, data.image)
+        this.item = new Pizza(
+          data.id,
+          data.name,
+          data.description,
+          data.ingredients.map((ingredient: any) => new Ingredient(
+            ingredient.id,
+            ingredient.name,
+            parseFloat(ingredient.price),
+            ingredient.unit,
+            ingredient.icon
+          )),
+          data.image
+        )
+        this.ingredientService.getIngredients().subscribe(data => {
+          this.ingredients = data.map((ingredient: any) => new Ingredient(
+            ingredient.id,
+            ingredient.name,
+            parseFloat(ingredient.price),
+            ingredient.unit,
+            ingredient.icon
+          ))
+          this.setIngredientsToAdd(this.ingredients, this.item.ingredients)
+        })
       })
-    })
-    this.ingredientService.getIngredients().subscribe(data => {
-      this.ingredients = data
-      this.setIngredientsToAdd([this.nullIngredient, ...this.ingredients])
     })
   }
 
   setIngredientsToAdd(ingredients: Ingredient[], skip: Ingredient[] = []) {
-    this.ingredientsToAdd = ingredients.filter(i => !skip.includes(i))
+    this.ingredientsToAdd = [this.nullIngredient, ...ingredients.filter(i => !skip.map(s => s.id).includes(i.id))]
   }
 
   save() {
@@ -49,14 +68,15 @@ export class PizzaEditComponent {
     })
   }
 
-  addIngredient(event: any) {
-    this.item.ingredients?.push(this.selectedIngredient)
+  addIngredient(ingredient: Ingredient) {
+    this.item.ingredients?.push(ingredient)
     this.selectedIngredient = this.nullIngredient
-    this.setIngredientsToAdd([this.nullIngredient, ...this.ingredients], this.item.ingredients)
+    this.setIngredientsToAdd(this.ingredients, this.item.ingredients)
   }
 
   removeIngredient(ingredient: Ingredient) {
     this.item.ingredients = this.item.ingredients?.filter(i => i.id !== ingredient.id) ?? []
+    this.setIngredientsToAdd(this.ingredients, this.item.ingredients)
   }
 
   selectIngredient($event: Event) {
